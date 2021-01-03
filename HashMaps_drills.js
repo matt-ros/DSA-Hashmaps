@@ -39,3 +39,28 @@ main();
 // Therefore, calling map1.set(str1, 10), then map1.set(str2, 20) is the same as calling map1.set('Hello, World.', 10), then map1.set('Hello, World.', 20).
 // As previously established, this will update the value associated with 'Hello, World.' as opposed to creating a new key.
 
+/* 3.1 {
+  0: 22,
+  1: 88,
+  2: empty,
+  3: empty,
+  4: 4,
+  5: 15,
+  6: 28,
+  7: 17,
+  8: 59,
+  9: 31,
+  10: 10
+} 
+
+3.2 {
+  0: empty,
+  1: 28 -> 19 -> 10,
+  2: 20,
+  3: 12,
+  4: empty,
+  5: 5,
+  6: 15 -> 33,
+  7: empty,
+  8: 17
+} */
