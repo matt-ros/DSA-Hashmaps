@@ -33,3 +33,9 @@ function main() {
 }
 
 main();
+
+// 2. The output of the code is map1.get(str1) -> 20, map2.get(str3) -> 10.
+// str1 and str2 are separate variables, but the strings they refer to are the same.
+// Therefore, calling map1.set(str1, 10), then map1.set(str2, 20) is the same as calling map1.set('Hello, World.', 10), then map1.set('Hello, World.', 20).
+// As previously established, this will update the value associated with 'Hello, World.' as opposed to creating a new key.
+
