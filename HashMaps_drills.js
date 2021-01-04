@@ -86,3 +86,35 @@ function removeDuplicates(string) {
 
 console.log(removeDuplicates('google'));
 console.log(removeDuplicates('google all that you can think of'));
+
+function permutationPalindrome(string) {
+  if (string.length === 1) {
+    return true;
+  }
+  let occurrences = new HashMap();
+  let chars = new Set();
+  for (let i = 0; i < string.length; i++) {
+    let currChar = string.charAt(i);
+    chars.add(currChar);
+    if (!occurrences.has(currChar)) {
+      occurrences.set(currChar, 1);
+      continue;
+    }
+    occurrences.set(currChar, occurrences.get(currChar) + 1);
+  }
+
+  const maxOddChars = string.length % 2;
+  let oddChars = 0;
+  for (const char of chars) {
+    if (occurrences.get(char) % 2 === 1) {
+      oddChars++;
+      if (oddChars > maxOddChars) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+console.log(permutationPalindrome('acecarr'));
+console.log(permutationPalindrome('north'));

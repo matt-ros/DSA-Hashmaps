@@ -21,6 +21,14 @@ class HashMap {
     return hash >>> 0;
   }
 
+  has(key) {
+    const index = this._findSlot(key);
+    if (this._hashTable[index] === undefined) {
+      return false;
+    }
+    return true;
+  }
+
   get(key) {
     const index = this._findSlot(key);
     if (this._hashTable[index] === undefined) {
