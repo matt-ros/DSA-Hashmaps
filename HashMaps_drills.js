@@ -118,3 +118,55 @@ function permutationPalindrome(string) {
 
 console.log(permutationPalindrome('acecarr'));
 console.log(permutationPalindrome('north'));
+
+function groupAnagrams(list) {
+  function areAnagrams(word1, word2) {
+    if (word1.length !== word2.length) {
+      return false;
+    }
+    let word1Chars = new HashMap();
+    let word2Chars = new HashMap();
+    for (let i = 0; i < word1.length; i++) {
+      let w1Char = word1.charAt(i);
+      let w2Char = word2.charAt(i);
+      if (!word1Chars.has(w1Char)) {
+        word1Chars.set(w1Char, 1)
+      } else {
+        word1Chars.set(w1Char, word1Chars.get(w1Char) + 1);
+      }
+      if (!word2Chars.has(w2Char)) {
+        word2Chars.set(w2Char, 1)
+      } else {
+        word2Chars.set(w2Char, word2Chars.get(w2Char) + 1);
+      }
+    }
+    for (let k = 0; k < word1.length; k++) {
+      let currChar = word1.charAt(k);
+      if (!word2Chars.has(currChar)) {
+        return false;
+      }
+      if (word1Chars.get(currChar) !== word2Chars.get(currChar)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  let output = [];
+  for (let x = 0; x < list.length; x++) {
+    let grams = [];
+    let currWord = list[x];
+    grams.push(currWord);
+    for (let y = x + 1; y < list.length; y++) {
+      if (areAnagrams(currWord, list[y])) {
+        grams.push(list[y]);
+        list.splice(y, 1);
+        y--;
+      }
+    }
+    output.push(grams);
+  }
+  return output;
+}
+
+console.log(groupAnagrams(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
