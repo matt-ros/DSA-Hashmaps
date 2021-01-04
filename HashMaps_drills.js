@@ -64,3 +64,25 @@ main();
   7: empty,
   8: 17
 } */
+
+function removeDuplicates(string) {
+  let chars = new HashMap(string.length);
+  let output = '';
+  for (let i = 0; i < string.length; i++) {
+    let currChar = string.charAt(i);
+    if (currChar === ' ') {
+      output += currChar;
+      continue;
+    }
+    try {
+      let occurrences = chars.get(currChar);
+    } catch (error) {
+      output += currChar;
+      chars.set(currChar, 1);
+    }
+  }
+  return output;
+}
+
+console.log(removeDuplicates('google'));
+console.log(removeDuplicates('google all that you can think of'));
